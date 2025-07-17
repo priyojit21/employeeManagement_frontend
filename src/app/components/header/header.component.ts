@@ -1,7 +1,12 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, effect, inject, input, signal } from '@angular/core';
 import { FunctionsService } from '../../services/functions.service';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+
+
+    // ngmodel has its own variant of ngmodelchange whwnver any change takes place in input function called
+    // [ngModel]="searchText"
+    // (ngModelChange)="onSearchChange($event)"
 
 @Component({
   selector: 'app-header',
@@ -20,8 +25,9 @@ import { FormsModule } from '@angular/forms';
     id="username"
     type="text"
     placeholder="Search..."
-    [(ngModel)]="searchText"
-    (input)="onSearchChange()"
+    [ngModel]="searchText"
+    (ngModelChange)="onSearchChange($event)"
+    
   />
   <div class="absolute right-0 inset-y-0 flex items-center">
     <svg
@@ -68,15 +74,15 @@ export class HeaderComponent {
 
   searchText = ''
 
-  onSearchChange() {
-    this.empService.updateSearch(this.searchText.trim())
-  }
-
-  // functionService = inject(FunctionsService)
 
   handleClick() {
-    console.log("I am clicked");
-    
+    console.log("I am clicked"); 
   }
+
+  onSearchChange(value : string){
+    this.searchText = value.trim();
+    this.empService.updateSearch(this.searchText);
+  }
+
 
 }

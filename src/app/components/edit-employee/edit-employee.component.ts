@@ -67,6 +67,7 @@ export class EditEmployeeComponent {
 
 
 
+//type of alias, instead of this.profileForm.name use only name
   get name() {
     return this.profileForm.get('name');
   }

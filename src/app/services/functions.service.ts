@@ -26,6 +26,9 @@ export class FunctionsService {
     return res.json();
   }
 
+  //passing data as param
+  //like name=priyo
+  //encodeURIComponent redefines text , spaces er care rakhe , different characters er kheyal rakhe
   async getAllEmployeesBySearching(searchText: string): Promise<Employee[]> {
     const url = `${this.baseUrl}/search?name=${encodeURIComponent(searchText)}`;
     const res = await fetch(url);

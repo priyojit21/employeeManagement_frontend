@@ -2,6 +2,7 @@ import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
+//demo not used anywhere
 //REACTIVE FORM GROUP WITH VALIDATION
 
 @Component({
